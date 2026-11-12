@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "validaciones.h"
 #include "simulador.h"
-
+// para acordarme gcc main.c simulador.c fisica.c validaciones.c -o simulador.exe -lm y luego .\simulador.exe
 int main() {
     int opcion;
     do {
