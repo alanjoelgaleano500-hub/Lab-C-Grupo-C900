@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "validaciones.h"
+#include "simulador.h"
 
 int main() {
     int opcion;
@@ -14,6 +15,7 @@ int main() {
         switch (opcion) {
             case 1:
                 printf("Iniciando simulacion...\n");
+                iniciarSimulacion();
                 break;
             case 2: {
                 double aceleracion;
