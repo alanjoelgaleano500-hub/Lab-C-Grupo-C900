@@ -1,4 +1,4 @@
-GRUPO C900 LABORATORIO C
+# Laboratorio C Grupo C900
 
 INTEGRANTES:
 
