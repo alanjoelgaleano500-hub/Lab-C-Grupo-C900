@@ -3,7 +3,7 @@
 #include "fisica.h"
 #include "validaciones.h"
 
-void reg_estad (Estad_nav historial[], //el historial seria el arreglo
+void regisEstad(Estad_nav historial[], // el historial seria el arreglo
                 int *cant,
                 Estad_nav Nue_estad) {
   if (*cant < MAX_HISTORI) {
@@ -11,6 +11,7 @@ void reg_estad (Estad_nav historial[], //el historial seria el arreglo
       (*cant)++;
   }
 }
+
 void mostrarResultados(Estad_nav estad1, // es para mostrar los resultados gnrals
                        Estad_nav estad2,
                        double tiempTotal,
@@ -24,10 +25,10 @@ void mostrarResultados(Estad_nav estad1, // es para mostrar los resultados gnral
     printf("Altura: %.2f m\n", estad2.altura);
     printf("Velocidad: %.2f m/s\n", estad2.velocidad);
     printf("\nTiempo total: %.2f segundos\n", tiempTotal);
-    printf("Aceleracion relativa: %.2f g\n",
-           gravedRelativa);
+    printf("Aceleracion relativa: %.2f g\n", gravedRelativa);
     printf("================================\n");
 }
+
 void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     ParametrosMision mision = {
@@ -47,7 +48,7 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
     nave.velocidad = 0;
     nave.aceleracion = mision.aceleracion1;
 
-    regisEstad(historial, & cant, nave);
+    regisEstad(historial, &cant, nave);
 
     printf("\n========== INICIO DE MISION ==========\n");
     printf("Altura inicial: 0 metros\n");
@@ -55,13 +56,13 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
     printf("\n========== FASE 1 ==========\n");
     printf("Ascenso con cohetes\n");
 
-    nave.velocidad = VelocidadMRUV( 
+    nave.velocidad = calcuVelocidadMRUV( 
         0,
         mision.aceleracion1,
         mision.tiempoSRB
     );
 
-    nave.altura = PosicionMRUV(
+    nave.altura = calcuPosicionMRUV(
         0,
         0,
         mision.aceleracion1,
@@ -70,7 +71,7 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     nave.tiempo = mision.tiempoSRB;
 
-   regisEstad(historial, &cant, nave);
+    regisEstad(historial, &cant, nave);
 
     printf("Tiempo: %.2f segundos\n", nave.tiempo);
     printf("Altura: %.2f metros\n", nave.altura);
@@ -80,19 +81,18 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     printf("\n>   DESPRENDIMIENTO    \n");
     printf("\n========== FASE 2 ==========\n");
-    printf("Continua el ascenso con motor princip\n");
+    printf("Continua el ascenso con motor principal\n");
 
     nave.aceleracion = mision.aceleracion2;
 
     double distancia = mision.alturaObjetivo - nave.altura;
 
-    // Calcula la velocidad al llegar a 160km
-    nave.velocidad = VelocidadSinTiempo(
+
+    nave.velocidad = calcuVelocidadSinTiempo(
         nave.velocidad,
         nave.aceleracion,
         distancia
     );
-
 
     double tiempoFase2 = (nave.velocidad - estadoSRB.velocidad) / nave.aceleracion;
 
@@ -109,7 +109,7 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     printf("\n    APAGADO DE MOTORES    \n");
 
-    double gravedadRelativa = MultiploGravedad(mision.aceleracion1);
+    double gravedadRelativa = calcuMultiploGravedad(mision.aceleracion1);
 
     mostrarResultados(
         estadoSRB,
@@ -120,14 +120,12 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     printf("\nQuieres simular una falla de motores? (1 = Si, 2 = No)\n");
 
-  
     int respuesta = leerEntero(1, 2);
 
     if (respuesta == 1) {
 
         printf("\n    FALLA DE MOTORES    \n");
         printf("La nave va en caida libre.\n");
-
 
         double alturaExtra = calcuAlturaMaxima(
             nave.velocidad,
