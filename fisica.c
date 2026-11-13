@@ -1,5 +1,4 @@
 #include "fisica.h"
-
 #include <math.h>
 
 // MRUV: v = v0 + a * t
@@ -23,12 +22,12 @@ double calcuVelocidadSinTiempo(double velocidadInicial, double aceleracion, doub
     return sqrt(velocidadFinalCuadrado);
 }
 
-// Altura máxima en lanzamiento vertical: h_max = v0^2 / (2 * g)
+// Altura maxima en lanzamiento vertical: h_max = v0^2 / (2 * g)
 double calcuAlturaMaxima(double velocidadInicial, double gravedad) {
     return (velocidadInicial * velocidadInicial) / (2.0 * gravedad);
 }
 
-// Múltiplo de la gravedad terrestre: g_local / g_tierra
-double calcuMultiploGravedad(double gravedadLocal) {
-    return gravedadLocal / GRAVEDAD_TIERRA;
+
+double calcuMultiploGravedad(double aceleracion, double gravedad) {
+    return aceleracion / gravedad;
 }
