@@ -18,7 +18,7 @@ void mostrarResultados(Estad_nav estad1, // es para mostrar los resultados gnral
                        double gravedRelativa) {
 
     printf("\n========== RESULTADOS ==========\n");
-    printf("FASE 1 - DESPRENDIMIENTO \n");
+    printf("FASE 1 - DESPEGUE \n");
     printf("Altura: %.2f m\n", estad1.altura);
     printf("Velocidad: %.2f m/s\n", estad1.velocidad);
     printf("\nFASE 2 - APAGADO DE MOTORES\n");
@@ -79,7 +79,7 @@ void iniciarSimulacion(void) { // ejecuta la simulacion completa
 
     Estad_nav estadoSRB = nave; // guarda el estado de la fase 1
 
-    printf("\n>   DESPRENDIMIENTO    \n");
+    printf("\n>   DESPEGUE   \n");
     printf("\n========== FASE 2 ==========\n");
     printf("Continua el ascenso con motor principal\n");
 
