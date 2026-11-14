@@ -3,5 +3,6 @@
 
 int leerEntero(int minimo, int maximo);
 double leerReal(double minimo, double maximo);
+double leerParametroMision(int opcion);
 
 #endif
