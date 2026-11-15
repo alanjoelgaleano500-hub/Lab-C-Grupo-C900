@@ -1,5 +1,6 @@
 # Simulador Artemis: Ascenso y propulsión con el SLS GRUPO C900
-
+Enlace al video subido en drive: https://drive.google.com/drive/folders/1hVBfdb4mwMpsuWEBnFGHuVSVp3R_Ipgo?usp=drive_link
+Enlace al repositorio de github: https://github.com/alanjoelgaleano500-hub/Lab-C-Grupo-C900
 ## Integrantes de Grupo
 
 - Galeano, Alan Joel
